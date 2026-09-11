@@ -119,14 +119,16 @@
     <section class="section container" id="contato">
       <div class="contact-grid">
         <div class="section-head"><span>contato</span><h2>Vamos falar do seu projeto</h2><p>Quanto mais detalhes você der, mais preciso fica o orçamento. Se ainda estiver só na ideia, tudo bem.</p><ul class="contact-notes"><li>Resposta e próximos passos por contato</li><li>Conversa por e-mail, WhatsApp ou chamada</li><li>Avaliação inicial sem compromisso</li></ul></div>
-        <form id="contactForm">
+        <form id="contactForm" name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contato">
+          <p style="display:none"><label>Não preencha este campo: <input name="bot-field"></label></p>
           <div class="form-grid"><label>Nome *<input required name="nome" placeholder="Seu nome"></label><label>E-mail *<input required type="email" name="email" placeholder="voce@empresa.com"></label></div>
           <div class="form-grid"><label>WhatsApp (opcional)<input name="whatsapp" placeholder="(00) 00000-0000"></label><label>Orçamento aproximado<select name="orcamento"><option value="">Selecione uma faixa</option><option>Até R$ 2.000</option><option>R$ 2.000 a R$ 5.000</option><option>R$ 5.000 a R$ 10.000</option><option>Acima de R$ 10.000</option></select></label></div>
           <label>Tipo de projeto *<select required name="tipo"><option value="">O que você precisa?</option><option>Site profissional</option><option>Sistema web sob medida</option><option>Dashboard / painel</option><option>Automação</option><option>Integração / API</option><option>Manutenção</option></select></label>
           <label>Mensagem *<textarea required name="mensagem" rows="6" placeholder="Conte o que precisa resolver, quem vai usar e se já existe algum sistema hoje."></textarea></label>
           <button class="btn btn-primary submit-btn" type="submit">Quero falar sobre meu projeto →</button>
-          <p class="form-note">O formulário desta versão é demonstrativo. Conecte-o a um serviço de e-mail ou backend antes de publicar.</p>
-          <div class="success" id="success">Pedido registrado nesta demonstração. Conecte um backend para receber os envios reais.</div>
+          <p class="form-note">Ao enviar, os dados serão registrados pelo Netlify Forms.</p>
+          <div class="success" id="success">Mensagem enviada com sucesso. Obrigado pelo contato!</div>
         </form>
       </div>
     </section>
