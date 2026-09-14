@@ -1,169 +1,197 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marcos.dev | Sites e sistemas sob medida para o seu negócio</title>
-  <meta name="description" content="Desenvolvimento de sites, sistemas web sob medida, dashboards, automações e integrações. Peça um orçamento com escopo, prazo e valor definidos." />
-  <meta name="theme-color" content="#08131f" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    .whatsapp-float{
-      position:fixed;right:20px;bottom:20px;z-index:9999;
-      display:flex;align-items:center;gap:9px;
-      padding:13px 17px;border-radius:999px;
-      background:#25D366;color:#07120b;text-decoration:none;
-      font-weight:800;box-shadow:0 12px 35px rgba(0,0,0,.35);
-      transition:transform .2s ease,filter .2s ease;
-    }
-    .whatsapp-float:hover{transform:translateY(-2px);filter:brightness(1.05)}
-    .whatsapp-float span:first-child{font-size:20px}
-    .btn-whatsapp{
-      background:#25D366!important;color:#07120b!important;border-color:#25D366!important;
-    }
-    @media(max-width:700px){
-      .whatsapp-float{right:14px;bottom:14px;padding:12px 14px}
-      .whatsapp-float .wa-label{display:none}
-    }
-  </style>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tecnologia empresarial em Brasília | Marcos Solutions</title>
+  <meta name="description" content="Sistemas, automações, integrações, infraestrutura, cloud, suporte e IA para médias e grandes empresas em Brasília, DF, Goiás e atendimento remoto." />
+  <meta name="theme-color" content="#081526" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marcos Solutions — Tecnologia para operações que precisam evoluir" />
+  <meta property="og:description" content="Soluções empresariais em sistemas, automação, integração, infraestrutura, suporte e IA." />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <header class="header" id="header">
-    <div class="nav-wrap">
-      <a href="#topo" class="brand"><span class="brand-icon">›_</span><strong>Marcos<span>.dev</span></strong></a>
-      <nav class="desktop-nav">
-        <a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Marcos Solutions — início">
+        <span class="brand-mark" aria-hidden="true"><i></i><b></b></span>
+        <span>Marcos Solutions</span>
+      </a>
+      <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-links" class="nav-links" aria-label="Navegação principal">
+        <a href="#solucoes">Soluções</a>
+        <a href="#empresas">Empresas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#contato">Contato</a>
+        <a class="button button-dark button-small" data-wa="geral" href="#">Falar no WhatsApp</a>
       </nav>
-      <a class="btn btn-primary nav-cta" href="#contato">Pedir orçamento</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
     </div>
-    <nav class="mobile-nav" id="mobileNav">
-      <a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href="#processo">Processo</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
-      <a class="btn btn-primary" href="#contato">Pedir orçamento</a>
-    </nav>
   </header>
 
   <main>
-    <section class="hero grid-bg" id="topo">
-      <div class="orb orb-a"></div><div class="orb orb-b"></div>
+    <section class="hero section-soft">
       <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">MARCOS SOLUTIONS <span>•</span> MÉDIAS E GRANDES EMPRESAS</p>
+          <h1>Tecnologia para operações que precisam evoluir</h1>
+          <p class="hero-lead">Sistemas, automações, integrações, infraestrutura e suporte para empresas que querem ganhar eficiência, reduzir retrabalho e conectar melhor suas operações.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" data-wa="geral" href="#">Falar com um especialista</a>
+            <a class="button button-light" href="#solucoes">Conhecer soluções</a>
+          </div>
+          <p class="microcopy">Atendimento em Brasília, DF, Goiás e remoto para outras regiões.</p>
+        </div>
+
+        <div class="ops-visual" aria-label="Ilustração de operação conectada">
+          <div class="ops-panel">
+            <div>
+              <strong>Operação conectada</strong>
+              <p>Uma visão central de processos, solicitações e indicadores.</p>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card"><span>AUTOMAÇÕES</span><strong>Fluxos ativos</strong></div>
+              <div class="stat-card"><span>INTEGRAÇÕES</span><strong>Sistemas conectados</strong></div>
+            </div>
+            <div class="flow-list">
+              <div><i></i><span>Solicitação recebida</span></div>
+              <div><i></i><span>Processo automatizado</span></div>
+              <div><i class="done"></i><span>Indicador atualizado</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solucoes">
+      <div class="container">
+        <p class="eyebrow">SOLUÇÕES</p>
+        <h2>Tecnologia aplicada aos processos da sua empresa</h2>
+        <p class="section-intro">Do sistema interno à infraestrutura, estruturamos soluções de acordo com a operação, as prioridades e o estágio tecnológico do negócio.</p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="service-icon">01</span>
+            <h3>Sistemas empresariais</h3>
+            <p>Sistemas web sob medida, portais internos, CRM e fluxos para processos específicos.</p>
+            <a data-wa="Sistemas empresariais" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">02</span>
+            <h3>Automação de processos</h3>
+            <p>Redução de tarefas manuais, aprovações, notificações e rotinas administrativas.</p>
+            <a data-wa="Automação de processos" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">03</span>
+            <h3>Integrações e APIs</h3>
+            <p>Conexão entre ERPs, CRMs, plataformas externas e sincronização de dados.</p>
+            <a data-wa="Integrações e APIs" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">04</span>
+            <h3>Dados e gestão</h3>
+            <p>Dashboards, indicadores, relatórios e centralização de informações para decisão.</p>
+            <a data-wa="Dados e gestão" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">05</span>
+            <h3>Infraestrutura e cloud</h3>
+            <p>Servidores, redes, Wi-Fi corporativo, cloud e organização da infraestrutura.</p>
+            <a data-wa="Infraestrutura e cloud" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">06</span>
+            <h3>Suporte e sustentação</h3>
+            <p>Manutenção, correções, melhorias, acompanhamento e suporte contínuo à operação.</p>
+            <a data-wa="Suporte e sustentação" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">07</span>
+            <h3>Presença digital corporativa</h3>
+            <p>Sites institucionais, portais e modernização da presença digital da empresa.</p>
+            <a data-wa="Presença digital corporativa" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon">08</span>
+            <h3>IA aplicada ao negócio</h3>
+            <p>Assistentes, automações inteligentes, chatbots e apoio a processos empresariais.</p>
+            <a data-wa="IA aplicada ao negócio" href="#">Falar sobre esta solução <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience" id="empresas">
+      <div class="container">
+        <p class="eyebrow">PARA QUEM É</p>
+        <h2>Estrutura tecnológica para operações que já têm escala</h2>
+        <p class="section-intro">Atuamos onde tecnologia precisa acompanhar processos, equipes e crescimento — sem expor preços genéricos antes de entender o cenário.</p>
+        <div class="audience-grid">
+          <article class="audience-card">
+            <h3>Médias empresas</h3>
+            <p>Para operações que precisam ganhar controle e produtividade.</p>
+            <ul>
+              <li>Automatizar processos repetitivos</li>
+              <li>Conectar sistemas e dados</li>
+              <li>Estruturar indicadores de gestão</li>
+              <li>Organizar suporte e infraestrutura</li>
+            </ul>
+          </article>
+          <article class="audience-card">
+            <h3>Grandes empresas</h3>
+            <p>Para ambientes com maior complexidade, integração e continuidade.</p>
+            <ul>
+              <li>Integrações entre áreas e plataformas</li>
+              <li>Sistemas internos sob medida</li>
+              <li>Sustentação e evolução contínua</li>
+              <li>Projetos de modernização tecnológica</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="como-funciona">
+      <div class="container">
+        <p class="eyebrow">COMO FUNCIONA</p>
+        <h2>Da conversa inicial à evolução da solução</h2>
+        <p class="section-intro">Primeiro entendemos a operação. Depois definimos escopo, implementação e acompanhamento.</p>
+        <div class="steps-grid">
+          <article class="step-card"><span>01</span><h3>Diagnóstico</h3><p>Entendemos processo, gargalos, ferramentas atuais e prioridade.</p></article>
+          <article class="step-card"><span>02</span><h3>Proposta</h3><p>Definimos solução, escopo, prazo e investimento adequado ao cenário.</p></article>
+          <article class="step-card"><span>03</span><h3>Implementação</h3><p>Construímos, integramos, testamos e colocamos a solução em operação.</p></article>
+          <article class="step-card"><span>04</span><h3>Evolução</h3><p>Acompanhamos, corrigimos e melhoramos conforme a operação cresce.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contato">
+      <div class="container cta-grid">
         <div>
-          <div class="status"><span></span>Disponível para novos projetos</div>
-          <h1>Transformo ideias em sistemas, sites e aplicações que <em>funcionam de verdade</em>.</h1>
-          <p class="lead">Sou o Marcos, programador. Desenvolvo soluções web sob medida para negócios e empreendedores, do site que traz clientes ao sistema que organiza a operação.</p>
-          <div class="actions"><a class="btn btn-primary" href="#contato">Pedir orçamento →</a><a class="btn btn-whatsapp" href="https://wa.me/5561996253510?text=Ol%C3%A1%20Marcos%2C%20encontrei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-secondary" href="#projetos">Ver projetos</a></div>
-          <div class="facts"><div><b>Remoto</b><small>todo o Brasil</small></div><div><b>Escopo</b><small>prazo e valor fechados</small></div><div><b>Suporte</b><small>depois da entrega</small></div></div>
+          <h2>Sua empresa tem um processo que precisa funcionar melhor?</h2>
+          <p>Conte o cenário da operação. Avaliamos a necessidade e indicamos a solução mais adequada.</p>
         </div>
-        <div class="terminal">
-          <div class="terminal-head"><i></i><i></i><i></i><span>‹/› marcos.ts</span></div>
-          <pre><span class="ln">01</span> const marcos = {
-<span class="ln">02</span>   <mark>foco: 'resolver problemas de negócio',</mark>
-<span class="ln">03</span>   entrega: ['sites', 'sistemas', 'dashboards'],
-<span class="ln">04</span>   stack: ['React', 'TypeScript', 'Node.js'],
-<span class="ln">05</span>   <mark>disponivel: true,</mark>
-<span class="ln">06</span> };
-<span class="ln">07</span> // vamos construir o seu <b class="caret"></b></pre>
-        </div>
+        <a class="button button-dark" data-wa="geral" href="#">Falar com um especialista <span>→</span></a>
       </div>
     </section>
-
-    <section class="section container" id="servicos">
-      <div class="section-head"><span>serviços</span><h2>O que eu construo</h2><p>Do site que apresenta o seu negócio ao sistema interno que faz a operação rodar.</p></div>
-      <div class="cards three">
-        <article><div class="icon">◉</div><h3>Site profissional</h3><p>Para quem perde cliente por não ter onde mostrar o trabalho: site rápido, bonito no celular e feito para gerar contato.</p><a href="#contato">Pedir orçamento →</a></article>
-        <article><div class="icon">▦</div><h3>Sistema sob medida</h3><p>Quando planilha e sistema pronto não dão conta: cadastros, permissões e as regras do seu negócio funcionando do jeito certo.</p><a href="#contato">Pedir orçamento →</a></article>
-        <article><div class="icon">▥</div><h3>Dashboard e painel</h3><p>Fim do relatório montado na mão: seus números atualizados em uma tela, com filtros e gráficos fáceis de ler.</p><a href="#contato">Pedir orçamento →</a></article>
-        <article><div class="icon">⌁</div><h3>Automação</h3><p>Aquela tarefa repetitiva de toda semana passa a rodar sozinha: importações, e-mails, relatórios e conferências.</p><a href="#contato">Pedir orçamento →</a></article>
-        <article><div class="icon">⛓</div><h3>Integrações e API</h3><p>Faço seus sistemas conversarem entre si: pagamentos, ERP, WhatsApp, planilhas e serviços externos no mesmo fluxo.</p><a href="#contato">Pedir orçamento →</a></article>
-        <article><div class="icon">⚙</div><h3>Manutenção e melhorias</h3><p>Sistema travando, lento ou parado no tempo? Corrijo o que está quebrado e adiciono o que faltou.</p><a href="#contato">Pedir orçamento →</a></article>
-      </div>
-      <div class="cta-band"><div><h3>Não sabe qual deles resolve o seu caso?</h3><p>Me conte o problema em duas linhas. Eu digo o que dá para fazer, quanto tempo leva e quanto custa.</p></div><a class="btn btn-primary" href="#contato">Pedir orçamento →</a></div>
-    </section>
-
-    <section class="section container" id="projetos">
-      <div class="section-head"><span>projetos</span><h2>Projetos em destaque</h2><p>Cases de demonstração criados para mostrar o tipo de solução que eu desenvolvo. As telas são ilustrativas e não representam clientes reais.</p></div>
-      <div class="projects">
-        <article class="project"><div class="mock crm"><div class="mock-top">● ● ● <span>crm / funil</span></div><div class="columns"><i></i><i></i><i></i></div><b>demo</b></div><div class="project-body"><span>CRM</span><h3>CRM de vendas</h3><p><strong>Problema</strong> Leads espalhados em planilhas e conversas soltas no WhatsApp.</p><p><strong>Solução</strong> Funil visual com etapas, histórico por cliente, lembretes e responsável por negociação.</p><p class="result"><strong>Resultado</strong> O time enxerga o funil inteiro em uma tela e nenhum contato fica sem retorno.</p><div class="tags"><i>React</i><i>TypeScript</i><i>Node.js</i><i>PostgreSQL</i></div><a class="btn btn-secondary" href="#contato">Quero um projeto assim ↗</a></div></article>
-        <article class="project"><div class="mock finance"><div class="mock-top">● ● ● <span>financeiro / fluxo de caixa</span></div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b>demo</b></div><div class="project-body"><span>Financeiro</span><h3>Painel financeiro</h3><p><strong>Problema</strong> Contas a pagar e receber controladas em arquivos diferentes a cada mês.</p><p><strong>Solução</strong> Lançamentos, categorias, contas recorrentes, conciliação simples e fechamento mensal.</p><p class="result"><strong>Resultado</strong> Fluxo de caixa sempre atualizado, sem refazer planilha todo começo de mês.</p><div class="tags"><i>React</i><i>Node.js</i><i>SQL</i><i>Gráficos</i></div><a class="btn btn-secondary" href="#contato">Quero um projeto assim ↗</a></div></article>
-        <article class="project"><div class="mock schedule"><div class="mock-top">● ● ● <span>agenda / horários</span></div><div class="calendar-grid"></div><b>demo</b></div><div class="project-body"><span>Agendamento</span><h3>Sistema de agendamento</h3><p><strong>Problema</strong> Horários marcados na mão, com conflitos de agenda e faltas frequentes.</p><p><strong>Solução</strong> Página pública para o cliente marcar, bloqueio de horários, confirmação e lembretes.</p><p class="result"><strong>Resultado</strong> A agenda se organiza sozinha e some o risco de dois atendimentos no mesmo horário.</p><div class="tags"><i>React</i><i>TypeScript</i><i>API REST</i><i>PostgreSQL</i></div><a class="btn btn-secondary" href="#contato">Quero um projeto assim ↗</a></div></article>
-        <article class="project"><div class="mock admin"><div class="mock-top">● ● ● <span>painel / administração</span></div><div class="table-lines"></div><b>demo</b></div><div class="project-body"><span>Administrativo</span><h3>Dashboard administrativo</h3><p><strong>Problema</strong> Equipe dependia do desenvolvedor para qualquer alteração de conteúdo ou dado.</p><p><strong>Solução</strong> Painel com níveis de acesso, edição de conteúdo, busca e registro de alterações.</p><p class="result"><strong>Resultado</strong> O time interno resolve o dia a dia sem abrir chamado para ninguém.</p><div class="tags"><i>React</i><i>Node.js</i><i>Autenticação</i><i>SQL</i></div><a class="btn btn-secondary" href="#contato">Quero um projeto assim ↗</a></div></article>
-      </div>
-      <p class="demo-note">Projetos de demonstração. Serão substituídos por cases reais conforme forem liberados pelos clientes.</p>
-      <div class="cta-band"><div><h3>Seu projeto pode ser o próximo</h3><p>Conte o que você precisa e eu monto uma proposta com escopo, prazo e valor fechados.</p></div><a class="btn btn-primary" href="#contato">Pedir orçamento →</a></div>
-    </section>
-
-    <section class="section container">
-      <div class="section-head"><span>diferenciais</span><h2>Por que trabalhar comigo?</h2><p>Sem enrolação: o que você ganha ao me contratar para o seu projeto.</p></div>
-      <div class="cards four">
-        <article><div class="icon">☵</div><h3>Comunicação simples</h3><p>Falo em português claro, sem termo técnico desnecessário. Você entende o que está sendo feito em cada etapa.</p></article>
-        <article><div class="icon">⌗</div><h3>Solução sob medida</h3><p>Nada de modelo genérico. O sistema segue o jeito que o seu negócio funciona, não o contrário.</p></article>
-        <article><div class="icon">⌘</div><h3>Código organizado</h3><p>Projeto estruturado e documentado, que pode crescer depois sem precisar ser refeito do zero.</p></article>
-        <article><div class="icon">◎</div><h3>Foco no que importa</h3><p>Começo pelo que resolve o seu problema agora. O resto entra depois, quando fizer sentido.</p></article>
-      </div>
-    </section>
-
-    <section class="section container" id="processo">
-      <div class="section-head"><span>processo</span><h2>Como eu trabalho</h2><p>Você não precisa entender de tecnologia. Precisa saber o que vai receber, quando e por quanto, e isso fica claro desde a primeira conversa.</p></div>
-      <div class="steps">
-        <article><b>01</b><h3>Conversa inicial</h3><p>Você me conta o problema em palavras normais. Eu pergunto o resto. Sem custo e sem compromisso.</p></article>
-        <article><b>02</b><h3>Planejamento</h3><p>Envio uma proposta com o que será feito, o prazo e o valor. Tudo combinado antes de começar.</p></article>
-        <article><b>03</b><h3>Desenvolvimento</h3><p>Você recebe versões parciais para ver funcionando e pedir ajustes durante o caminho.</p></article>
-        <article><b>04</b><h3>Entrega e evolução</h3><p>Coloco no ar, explico como usar e sigo disponível para correções e novas melhorias.</p></article>
-      </div>
-    </section>
-
-    <section class="section container" id="sobre">
-      <div class="about-grid">
-        <div class="section-head"><span>sobre</span><h2>Programador focado em transformar ideias em software que funciona</h2><p>Meu trabalho começa entendendo o problema. Antes de falar de tecnologia, eu quero saber o que trava a sua operação hoje, quem vai usar o sistema e o que precisa melhorar primeiro.</p><p>A partir daí, construo uma solução simples de usar, organizada e pronta para evoluir.</p></div>
-        <article class="expect"><h3>O que você pode esperar</h3><ul><li>Escopo, prazo e valor definidos antes do início</li><li>Entregas parciais para acompanhar a evolução</li><li>Sistema simples de usar</li><li>Código organizado e pronto para crescer</li><li>Suporte e ajustes depois da entrega</li></ul></article>
-      </div>
-    </section>
-
-    <section class="section container">
-      <div class="section-head"><span>stack</span><h2>Tecnologias que eu uso</h2><p>Ferramentas maduras e bem suportadas, escolhidas pelo que o projeto precisa.</p></div>
-      <div class="stack-grid"><div>JavaScript <small>base de tudo</small></div><div>TypeScript <small>código mais seguro</small></div><div>React <small>interfaces</small></div><div>Node.js <small>back-end</small></div><div>SQL / PostgreSQL <small>dados</small></div><div>APIs REST <small>integrações</small></div><div>Git <small>versionamento</small></div><div>HTML & CSS <small>web moderna</small></div></div>
-    </section>
-
-    <section class="section container faq">
-      <div class="section-head"><span>faq</span><h2>Perguntas frequentes</h2></div>
-      <details><summary>Quanto tempo leva para ficar pronto?</summary><p>Depende do tamanho. Um site profissional costuma levar de 1 a 3 semanas; sistemas sob medida são divididos em etapas.</p></details>
-      <details><summary>Como funciona o orçamento?</summary><p>Primeiro entendo o que você precisa, depois envio uma proposta com escopo, prazo e valor fechado. Conversar e avaliar o projeto não tem custo.</p></details>
-      <details><summary>Você faz manutenção depois da entrega?</summary><p>Sim. Dá para contratar suporte pontual ou acompanhamento para evoluir o sistema.</p></details>
-      <details><summary>Trabalha remoto?</summary><p>Sim. O atendimento pode ser feito remotamente, com comunicação por e-mail, WhatsApp ou vídeo.</p></details>
-    </section>
-
-    <section class="section container" id="contato">
-      <div class="contact-grid">
-        <div class="section-head"><span>contato</span><h2>Vamos falar do seu projeto</h2><p>Quanto mais detalhes você der, mais preciso fica o orçamento. Se ainda estiver só na ideia, tudo bem.</p><ul class="contact-notes"><li>Resposta e próximos passos por contato</li><li>Conversa por e-mail, WhatsApp ou chamada</li><li>Avaliação inicial sem compromisso</li></ul></div>
-        <form id="contactForm" name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contato">
-          <p style="display:none"><label>Não preencha este campo: <input name="bot-field"></label></p>
-          <div class="form-grid"><label>Nome *<input required name="nome" placeholder="Seu nome"></label><label>E-mail *<input required type="email" name="email" placeholder="voce@empresa.com"></label></div>
-          <div class="form-grid"><label>WhatsApp (opcional)<input name="whatsapp" placeholder="(00) 00000-0000"></label><label>Orçamento aproximado<select name="orcamento"><option value="">Selecione uma faixa</option><option>Até R$ 2.000</option><option>R$ 2.000 a R$ 5.000</option><option>R$ 5.000 a R$ 10.000</option><option>Acima de R$ 10.000</option></select></label></div>
-          <label>Tipo de projeto *<select required name="tipo"><option value="">O que você precisa?</option><option>Site profissional</option><option>Sistema web sob medida</option><option>Dashboard / painel</option><option>Automação</option><option>Integração / API</option><option>Manutenção</option></select></label>
-          <label>Mensagem *<textarea required name="mensagem" rows="6" placeholder="Conte o que precisa resolver, quem vai usar e se já existe algum sistema hoje."></textarea></label>
-          <button class="btn btn-primary submit-btn" type="submit">Quero falar sobre meu projeto →</button>
-          <p class="form-note">Ao enviar, os dados serão registrados pelo Netlify Forms.</p>
-          <div class="success" id="success">Mensagem enviada com sucesso. Obrigado pelo contato!</div>
-        </form>
-      </div>
-    </section>
-
-    <section class="final-cta"><div class="container"><div class="cta-box"><h2>Tem uma ideia ou um problema para resolver? <em>Vamos transformar isso em software.</em></h2><p>Me conte em poucas linhas o que você precisa.</p><div class="actions"><a class="btn btn-primary" href="#contato">Pedir orçamento →</a><a class="btn btn-whatsapp" href="https://wa.me/5561996253510?text=Ol%C3%A1%20Marcos%2C%20encontrei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">WhatsApp</a></div></div></div></section>
   </main>
 
-  <footer><div class="container footer-grid"><div><strong>Marcos<span>.dev</span></strong><p>Desenvolvimento de sites, sistemas web, dashboards e automações.</p></div><div class="social"><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="mailto:contato@exemplo.com">E-mail</a></div></div><div class="container copyright">© 2026 Marcos. Links sociais e e-mail são placeholders editáveis.</div></footer>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><b></b></span><span>Marcos Solutions</span></a>
+      <div class="footer-links">
+        <span>Brasília, DF + Goiás + atendimento remoto</span>
+        <a data-wa="geral" href="#">WhatsApp</a>
+        <a href="https://www.instagram.com/mn_tsd?stkn=MWoyb2J2eGxpNmFnaA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
 
-
-  <a class="whatsapp-float" href="https://wa.me/5561996253510?text=Ol%C3%A1%20Marcos%2C%20encontrei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar com Marcos pelo WhatsApp">
-    <span>◉</span><span class="wa-label">WhatsApp</span>
-  </a>
-
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>

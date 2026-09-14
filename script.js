@@ -1,37 +1,27 @@
-const header=document.getElementById("header");
-const menuBtn=document.getElementById("menuBtn");
-const mobileNav=document.getElementById("mobileNav");
+(() => {
+  const PHONE = '5561996253510';
+  const DEFAULT_MESSAGE = 'Olá, vim pelo site da Marcos Solutions e gostaria de conversar sobre uma solução para minha empresa.';
 
-addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>10));
-menuBtn.addEventListener("click",()=>mobileNav.classList.toggle("open"));
-mobileNav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>mobileNav.classList.remove("open")));
+  document.querySelectorAll('[data-wa]').forEach((link) => {
+    const service = link.dataset.wa;
+    const message = service && service !== 'geral'
+      ? `Olá, vim pelo site da Marcos Solutions e gostaria de conversar sobre ${service} na minha empresa.`
+      : DEFAULT_MESSAGE;
+    link.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
 
-const form=document.getElementById("contactForm");
-form.addEventListener("submit",async e=>{
-  e.preventDefault();
-  const btn=form.querySelector(".submit-btn");
-  const success=document.getElementById("success");
-  const original=btn.textContent;
-  btn.textContent="Enviando...";
-  btn.disabled=true;
-  success.classList.remove("show");
-  try{
-    const data=new FormData(form);
-    const body=new URLSearchParams(data);
-    const response=await fetch("/",{
-      method:"POST",
-      headers:{"Content-Type":"application/x-www-form-urlencoded"},
-      body:body.toString()
+  const menuButton = document.querySelector('.menu-button');
+  const nav = document.querySelector('.nav-links');
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
     });
-    if(!response.ok) throw new Error("Falha no envio");
-    form.reset();
-    success.textContent="Mensagem enviada com sucesso. Obrigado pelo contato!";
-    success.classList.add("show");
-  }catch(error){
-    success.textContent="Não foi possível enviar agora. Tente novamente em alguns instantes.";
-    success.classList.add("show");
-  }finally{
-    btn.textContent=original;
-    btn.disabled=false;
+    nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }));
   }
-});
+})();
