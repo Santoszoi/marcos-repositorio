@@ -176,3 +176,173 @@ h3 { font-size: 18px; line-height: 1.25; margin-bottom: 10px; }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* === Dark corporate theme inspired by the previous Marcos.dev visual === */
+:root {
+  --page: #06111c;
+  --soft: #081725;
+  --text: #b8c5d2;
+  --muted: #8fa0b2;
+  --line: rgba(255,255,255,.10);
+  --white: #ffffff;
+  --teal-soft: rgba(20,216,198,.10);
+  --shadow: 0 22px 70px rgba(0,0,0,.32);
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% -5%, rgba(0,166,166,.18), transparent 30%),
+    radial-gradient(circle at 92% 8%, rgba(232,188,54,.10), transparent 26%),
+    #06111c;
+  color: #f4f8fb;
+}
+
+.site-header {
+  background: rgba(5,15,26,.82);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(18px);
+}
+.brand { color: #fff; }
+.nav-links > a:not(.button) { color: #b9c6d4; }
+.nav-links > a:not(.button):hover { color: #39ddcd; }
+.menu-button { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.11); }
+.menu-button span { background: #fff; }
+
+.button-dark {
+  background: linear-gradient(100deg, #14d8c6 0%, #62ddb1 52%, #f5d63d 100%);
+  color: #06111c;
+  box-shadow: 0 12px 34px rgba(20,216,198,.18);
+}
+.button-dark:hover {
+  background: linear-gradient(100deg, #31e3d2 0%, #79e6be 52%, #f7df5d 100%);
+  box-shadow: 0 16px 38px rgba(20,216,198,.25);
+}
+.button-light {
+  background: rgba(255,255,255,.025);
+  color: #eef5fb;
+  border-color: rgba(255,255,255,.14);
+}
+.button-light:hover { border-color: rgba(57,221,205,.55); background: rgba(255,255,255,.055); }
+
+.section-soft { background: #081725; }
+.section { background: #07131f; }
+.eyebrow { color: #25d7c7; }
+.eyebrow span { color: #f0d24d; }
+h1, h2, h3 { color: #f7fbff; }
+.section-intro, .hero-lead { color: #b6c3d0; }
+.microcopy { color: #8fa0b2; }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(0,190,175,.28), transparent 30%),
+    radial-gradient(circle at 72% 10%, rgba(0,130,140,.18), transparent 26%),
+    radial-gradient(circle at 88% 72%, rgba(232,177,44,.22), transparent 30%),
+    linear-gradient(135deg, #071522 0%, #081926 48%, #0a1620 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.88), transparent 92%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: 24%;
+  bottom: -260px;
+  border-radius: 50%;
+  background: rgba(243,197,54,.14);
+  filter: blur(90px);
+  z-index: -1;
+}
+.hero-grid { position: relative; z-index: 1; }
+.hero-copy { padding: 26px 0; }
+
+.ops-visual {
+  background: rgba(3,13,23,.76);
+  border: 1px solid rgba(75,223,210,.13);
+  box-shadow: 0 28px 80px rgba(0,0,0,.36), 0 0 80px rgba(0,166,166,.09);
+}
+.ops-panel {
+  background: linear-gradient(160deg, rgba(14,32,52,.96), rgba(8,25,39,.98));
+  border: 1px solid rgba(255,255,255,.06);
+}
+.stat-card { background: rgba(20,43,66,.82); border: 1px solid rgba(255,255,255,.04); }
+.flow-list div { background: rgba(18,38,59,.88); border: 1px solid rgba(255,255,255,.035); }
+
+.services-grid { position: relative; }
+.service-card {
+  background: linear-gradient(180deg, rgba(14,31,47,.96), rgba(9,25,39,.96));
+  border-color: rgba(255,255,255,.09);
+  box-shadow: 0 10px 28px rgba(0,0,0,.10);
+}
+.service-card:hover {
+  border-color: rgba(38,215,199,.38);
+  box-shadow: 0 18px 50px rgba(0,0,0,.22), 0 0 30px rgba(0,166,166,.06);
+}
+.service-icon { background: rgba(20,216,198,.10); color: #38ddcd; border: 1px solid rgba(38,215,199,.15); }
+.service-card h3 { color: #f4f8fb; }
+.service-card p { color: #aebdca; }
+.service-card a { color: #35d9ca; }
+.service-card a:hover { color: #7ce8dc; }
+
+.audience {
+  background:
+    radial-gradient(circle at 88% 20%, rgba(0,166,166,.12), transparent 28%),
+    #050f1a;
+}
+.audience-card {
+  background: linear-gradient(160deg, rgba(14,32,52,.96), rgba(9,25,40,.96));
+  border-color: rgba(255,255,255,.08);
+  box-shadow: 0 18px 48px rgba(0,0,0,.16);
+}
+
+.step-card {
+  background: linear-gradient(180deg, rgba(14,31,47,.96), rgba(9,25,39,.96));
+  border-color: rgba(255,255,255,.09);
+}
+.step-card h3 { color: #f4f8fb; }
+.step-card p { color: #aebdca; }
+
+.cta-section {
+  background:
+    radial-gradient(circle at 12% 50%, rgba(20,216,198,.20), transparent 35%),
+    radial-gradient(circle at 92% 40%, rgba(245,214,61,.12), transparent 34%),
+    #081725;
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.cta-grid p { color: #afbdca; }
+
+.footer { background: #050f1a; border-top-color: rgba(255,255,255,.07); }
+.footer-links { color: #8fa0b2; }
+.footer-links a { color: #35d9ca; }
+
+@media (max-width: 860px) {
+  .nav-links {
+    background: rgba(6,17,28,.98);
+    border-color: rgba(255,255,255,.10);
+    box-shadow: 0 22px 60px rgba(0,0,0,.42);
+  }
+  .nav-links > a:not(.button):hover { background: rgba(255,255,255,.05); }
+}
+
+@media (max-width: 620px) {
+  .hero {
+    background:
+      radial-gradient(circle at 18% 8%, rgba(0,190,175,.24), transparent 34%),
+      radial-gradient(circle at 88% 55%, rgba(232,177,44,.16), transparent 34%),
+      linear-gradient(160deg, #071522 0%, #081824 52%, #07131d 100%);
+  }
+  .hero::before { background-size: 42px 42px; opacity: .7; }
+}
