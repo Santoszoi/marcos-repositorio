@@ -70,9 +70,9 @@ document.querySelectorAll('[data-demo-view]').forEach(button=>button.addEventLis
 document.querySelectorAll('[data-solution]').forEach(a=>a.addEventListener('click',()=>{form.elements.solucao.value=a.dataset.solution;}));
 renderDemo();
 
-// Replay service-card entrances when scrolling in either direction.
+// Replay service, about and FAQ entrances when scrolling in either direction.
 (() => {
-  const cards = [...document.querySelectorAll('.expanded-services > article')];
+  const cards = [...document.querySelectorAll('.expanded-services > article, .about-section > div, .faq-list > details')];
   if (!cards.length || !('IntersectionObserver' in window)) return;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let observer;
