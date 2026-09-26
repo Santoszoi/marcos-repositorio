@@ -18,7 +18,7 @@ form.addEventListener('submit', event => {
     '*NOVA SOLICITAÇÃO DE PROPOSTA - MARCOS SOLUTIONS* ✳️',
     '',
     '*👤 Nome:* ' + fields.get('nome').trim(),
-    '*🏢 Empresa:* ' + fields.get('empresa').trim(),
+    '*🏢 Empresa:* ' + (fields.get('empresa').trim() || 'Não informada'),
     '*🛠️ Solução procurada:* ' + fields.get('solucao'),
     '*📅 Prazo pretendido:* ' + fields.get('prazo'),
     '',

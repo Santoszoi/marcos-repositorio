@@ -58,3 +58,24 @@ html{scroll-padding-top:110px}section[id],article[id]{scroll-margin-top:110px}h1
 @keyframes service-enter-up{from{opacity:.5;transform:translateY(-26px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:640px){.expanded-services > article{animation-delay:0ms}}
 @media(prefers-reduced-motion:reduce){.expanded-services > article.service-enter-down,.expanded-services > article.service-enter-up{animation:none;transform:none;opacity:1}}
+
+/* Four service areas with plain, scannable bullet points. */
+.service-grid.four-services{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.service-card-top{display:flex;justify-content:space-between;align-items:center}
+.service-symbol{width:48px;height:48px;display:grid;place-items:center;background:#e6eddc;color:#3e592b;border:1px solid #c3ceba;border-radius:12px}
+.service-symbol svg{width:27px;height:27px}
+.four-services h3{font-size:32px;margin:20px 0 14px}
+.four-services ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+.four-services li{display:flex;align-items:baseline;font-size:14px;line-height:1.5}
+.four-services li:before{content:'•';display:inline-block;color:#54782e;margin-right:9px;font-weight:700}
+.service-help{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #c3ccbb;padding-top:24px;margin-top:28px}
+.service-help p{margin:0;max-width:430px;color:#394735;line-height:1.6}
+.service-help .button{flex-shrink:0}
+.brief-intro{font-size:14px;line-height:1.6;margin:0;color:#46533f}
+.brief-details{border:1px solid #aebba1;border-radius:8px;padding:14px}
+.brief-details summary{cursor:pointer;font-size:14px;font-weight:600;min-height:24px}
+.brief-details[open] summary{margin-bottom:16px}
+.brief-details label{display:block;margin-top:14px}
+.four-services > article:nth-child(n){animation-delay:0ms}
+.four-services > article:nth-child(even){animation-delay:65ms}
+@media(max-width:640px){.service-grid.four-services{grid-template-columns:minmax(0,1fr);gap:20px}.four-services ul{grid-template-columns:minmax(0,1fr);gap:10px}.service-help{flex-direction:column;align-items:stretch}.service-help .button{text-align:center}.four-services > article:nth-child(n){animation-delay:0ms}}
