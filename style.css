@@ -79,3 +79,10 @@ html{scroll-padding-top:110px}section[id],article[id]{scroll-margin-top:110px}h1
 .four-services > article:nth-child(n){animation-delay:0ms}
 .four-services > article:nth-child(even){animation-delay:65ms}
 @media(max-width:640px){.service-grid.four-services{grid-template-columns:minmax(0,1fr);gap:20px}.four-services ul{grid-template-columns:minmax(0,1fr);gap:10px}.service-help{flex-direction:column;align-items:stretch}.service-help .button{text-align:center}.four-services > article:nth-child(n){animation-delay:0ms}}
+
+/* Descriptive pillar lists retain one reading column inside each card. */
+.four-services ul.pillar-details{grid-template-columns:minmax(0,1fr);gap:18px}
+.pillar-details li>div{min-width:0}
+.pillar-details strong{display:block;color:#263520;font-size:15px;line-height:1.45;margin-bottom:4px}
+.pillar-details li span{display:block;color:#586254;font-size:14px;line-height:1.65}
+.hero h1{font-size:clamp(36px,4.5vw,64px)}
