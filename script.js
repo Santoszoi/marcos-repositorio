@@ -69,3 +69,40 @@ periodControl.addEventListener('change',renderDemo);
 document.querySelectorAll('[data-demo-view]').forEach(button=>button.addEventListener('click',()=>{demoView=button.dataset.demoView;document.querySelectorAll('[data-demo-view]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderDemo();}));
 document.querySelectorAll('[data-solution]').forEach(a=>a.addEventListener('click',()=>{form.elements.solucao.value=a.dataset.solution;}));
 renderDemo();
+
+// Replay service-card entrances when scrolling in either direction.
+(() => {
+  const cards = [...document.querySelectorAll('.expanded-services > article')];
+  if (!cards.length || !('IntersectionObserver' in window)) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let observer;
+  let lastY = window.scrollY;
+  let direction = 'down';
+  const updateDirection = () => {
+    const nextY = window.scrollY;
+    if (nextY !== lastY) direction = nextY > lastY ? 'down' : 'up';
+    lastY = nextY;
+  };
+  const resetCard = card => card.classList.remove('service-enter-down', 'service-enter-up');
+  const configureMotion = () => {
+    if (observer) observer.disconnect();
+    window.removeEventListener('scroll', updateDirection);
+    cards.forEach(resetCard);
+    if (motion.matches) return;
+    lastY = window.scrollY;
+    window.addEventListener('scroll', updateDirection, { passive: true });
+    observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          resetCard(entry.target);
+          entry.target.classList.add('service-enter-' + direction);
+        } else {
+          resetCard(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(card => observer.observe(card));
+  };
+  if (motion.addEventListener) motion.addEventListener('change', configureMotion);
+  configureMotion();
+})();

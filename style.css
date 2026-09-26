@@ -48,3 +48,13 @@ html{scroll-padding-top:110px}section[id],article[id]{scroll-margin-top:110px}h1
 .service-disclaimer{font-size:13px;line-height:1.7;color:#586254;max-width:850px;margin:24px 0 0}
 @media(max-width:1000px){.service-grid.expanded-services{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.service-grid.expanded-services{grid-template-columns:minmax(0,1fr);gap:20px}.service-grid.expanded-services article,.service-grid.expanded-services article+article{padding:24px}}
+
+/* Content stays visible without JavaScript; entrances replay in both directions. */
+.expanded-services > article.service-enter-down{animation:service-enter-down .55s cubic-bezier(.22,.61,.36,1) both}
+.expanded-services > article.service-enter-up{animation:service-enter-up .55s cubic-bezier(.22,.61,.36,1) both}
+.expanded-services > article:nth-child(3n+2){animation-delay:55ms}
+.expanded-services > article:nth-child(3n+3){animation-delay:110ms}
+@keyframes service-enter-down{from{opacity:.5;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes service-enter-up{from{opacity:.5;transform:translateY(-26px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){.expanded-services > article{animation-delay:0ms}}
+@media(prefers-reduced-motion:reduce){.expanded-services > article.service-enter-down,.expanded-services > article.service-enter-up{animation:none;transform:none;opacity:1}}
