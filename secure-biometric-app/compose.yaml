@@ -1,0 +1,14 @@
+services:
+  api:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      HOST: 0.0.0.0
+      DB_PATH: /app/data/app.sqlite
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - app_data:/app/data
+volumes:
+  app_data:
