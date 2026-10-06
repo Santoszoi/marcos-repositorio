@@ -65,10 +65,10 @@ class _SecureAppState extends State<SecureApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     widget.session.init().catchError((Object error) {
       if (mounted)
-        setState(
+        {setState(
           () => startupError =
               'Não foi possível acessar o armazenamento seguro. Reinicie o aplicativo.',
-        );
+        );}
     });
   }
 
@@ -93,18 +93,18 @@ class _SecureAppState extends State<SecureApp> with WidgetsBindingObserver {
       builder: (context, _) {
         final session = widget.session;
         if (startupError != null)
-          return Scaffold(body: Center(child: Text(startupError!)));
+          {return Scaffold(body: Center(child: Text(startupError!)));}
         if (!session.ready)
-          return const Scaffold(
+          {return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
-          );
+          );}
         if (!session.foreground)
-          return const Scaffold(
+          {return const Scaffold(
             body: Center(child: Icon(Icons.shield_outlined, size: 72)),
-          );
+          );}
         if (session.signedIn && !session.unlocked)
-          return LockScreen(session: session);
-        if (!session.signedIn) return AuthScreen(session: session);
+          {return LockScreen(session: session);}
+        if (!session.signedIn) {return AuthScreen(session: session);}
         return HomeScreen(session: session);
       },
     ),

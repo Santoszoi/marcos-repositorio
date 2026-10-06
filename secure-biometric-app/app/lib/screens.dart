@@ -98,7 +98,7 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Future<void> submit() async {
-    if (busy || !form.currentState!.validate()) return;
+    if (busy || !form.currentState!.validate()) {return;}
     FocusScope.of(context).unfocus();
     setState(() {
       busy = true;
@@ -118,10 +118,10 @@ class _AuthScreenState extends State<AuthScreen> {
           body: {'email': email.text.trim()},
         );
         if (mounted)
-          setState(() {
+          {setState(() {
             message = data['message'] as String;
             error = false;
-          });
+          });}
       } else {
         await widget.session.api.call(
           'v1/auth/reset-password',
@@ -138,14 +138,14 @@ class _AuthScreenState extends State<AuthScreen> {
       }
     } catch (e) {
       if (mounted)
-        setState(() {
+        {setState(() {
           message = e is ApiException
               ? e.message
               : 'Não foi possível concluir. Tente novamente.';
           error = true;
-        });
+        });}
     } finally {
-      if (mounted) setState(() => busy = false);
+      if (mounted) {setState(() => busy = false);}
     }
   }
 
@@ -319,10 +319,10 @@ class _LockScreenState extends State<LockScreen> {
       await widget.session.unlock();
     } catch (_) {
       if (mounted)
-        setState(
+        {setState(
           () => message =
               'Não foi possível desbloquear. Tente novamente ou entre com sua senha.',
-        );
+        );}
     }
   }
 
@@ -397,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> action(Future<void> Function() work, {String? success}) async {
-    if (busy) return;
+    if (busy) {return;}
     FocusScope.of(context).unfocus();
     setState(() {
       busy = true;
@@ -406,43 +406,43 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       await work();
       if (mounted)
-        setState(() {
+        {setState(() {
           message = success;
           error = false;
-        });
+        });}
     } catch (e) {
-      if (e is ApiException && e.status == 401) await session.clear();
+      if (e is ApiException && e.status == 401) {await session.clear();}
       if (mounted)
-        setState(() {
+        {setState(() {
           message = e is ApiException
               ? e.message
               : 'Não foi possível concluir. Tente novamente.';
           error = true;
-        });
+        });}
     } finally {
-      if (mounted) setState(() => busy = false);
+      if (mounted) {setState(() => busy = false);}
     }
   }
 
   Future<void> loadUsers() async {
     final data = await session.api.call('v1/admin/users?offset=$offset');
     if (mounted)
-      setState(() {
+      {setState(() {
         users = (data['users'] as List)
             .map((v) => Map<String, dynamic>.from(v as Map))
             .toList();
         total = data['total'] as int;
-      });
+      });}
   }
 
   Future<void> loadAudit() async {
     final data = await session.api.call('v1/admin/audit');
     if (mounted)
-      setState(
+      {setState(
         () => events = (data['events'] as List)
             .map((v) => Map<String, dynamic>.from(v as Map))
             .toList(),
-      );
+      );}
   }
 
   @override
@@ -705,7 +705,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: busy
                     ? null
                     : () {
-                        if (!form.currentState!.validate()) return;
+                        if (!form.currentState!.validate()) {return;}
                         action(
                           () async {
                             if (view == 'profile') {
@@ -760,7 +760,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return PageFrame(
       title: title,
       subtitle: subtitle,
-      children: children,
       actions: [
         IconButton(
           tooltip: 'Bloquear',
@@ -768,6 +767,7 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: const Icon(Icons.lock_outline),
         ),
       ],
+      children: children,
     );
   }
 }
