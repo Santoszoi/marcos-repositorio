@@ -15,6 +15,16 @@ reconhecimento facial compatível no Android. Interface em português.
 - API com validação, limites de tentativas e revogação de sessões.
 - Testes da API, testes Flutter de sessão e formulários, pipeline de análise/build Android e iOS.
 
+## Baixe o código
+
+```powershell
+git clone https://github.com/Santoszoi/marcos-repositorio.git
+cd marcos-repositorio/secure-biometric-app
+```
+
+Também é possível usar **Code → Download ZIP** no GitHub e abrir a pasta
+`secure-biometric-app`. Os comandos seguintes partem dessa pasta.
+
 ## 1. Instale as ferramentas
 
 No Windows: Git, Node.js 24+, Flutter stable 3.38+ e Android Studio com Android
@@ -64,7 +74,7 @@ flutter devices
 
 O comando gera os projetos nativos oficiais com o Flutter instalado e configura
 FragmentActivity, permissões, temas AppCompat, Android mínimo 24, Face ID,
-iOS mínimo 13 e Keychain. Ele preserva os arquivos Dart. Execute uma vez após
+iOS mínimo 15 e Keychain. Ele preserva os arquivos Dart. Execute uma vez após
 clonar, tanto no Windows quanto no macOS. A primeira execução baixa dependências.
 
 No emulador Android:
@@ -138,16 +148,28 @@ provisionamento Apple, ícones finais e a política de privacidade do serviço.
 O APK padrão do template usa chave de desenvolvimento até você configurar
 assinatura de release. Nunca publique essa build como versão de loja.
 
+## Gerar APK pelo GitHub, sem instalar o SDK no computador
+
+Abra **Actions → Validate app and API → Run workflow**. Informe o endereço
+HTTPS da sua API no campo `api_url` e execute. Quando terminar, baixe o
+artefato `android-debug-apk`, extraia o ZIP e instale o APK no Android.
+É uma build de teste. Com a URL padrão, o aplicativo não terá um servidor
+conectado. A versão de loja exige sua assinatura de release.
+
 ## Validação desta entrega
 
-Os 6 testes automatizados da API foram executados e passaram neste ambiente.
-Também foi testada a configuração nativa com um modelo de projeto simulado,
-sem substituir a validação com os SDKs reais.
-O SDK Flutter e os SDKs Android/Xcode não estão disponíveis neste ambiente;
-portanto os testes Flutter e os builds nativos ainda precisam rodar na sua
-máquina ou no GitHub Actions. Não há APK/IPA validado nesta entrega.
-O pipeline gera um APK de teste com URL de exemplo, sem backend conectado;
-para usá-lo de verdade, compile com o endereço da sua API.
+Validação com Flutter 3.47.6 no GitHub Actions:
+
+- 6 testes da API e 1 teste de configuração nativa aprovados.
+- Análise do Flutter sem erros/avisos e 9 testes Flutter aprovados.
+- Build iOS de dispositivo aprovado, sem assinatura (Runner.app).
+- Build Android e publicação do APK de teste acompanhados no pipeline.
+
+A biometria precisa ser conferida em um aparelho real com Face ID ou impressão
+digital cadastrada. O pipeline usa uma URL de exemplo, sem backend conectado;
+para usar o APK de verdade, compile com o endereço da sua API.
+A preparação local do SDK foi interrompida por uma restrição do ambiente;
+a validação Flutter foi executada pelos runners do GitHub.
 
 ## Estrutura
 

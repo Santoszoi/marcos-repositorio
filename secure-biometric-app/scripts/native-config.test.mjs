@@ -38,6 +38,8 @@ if(args[0]==='create') {
   assert.match(file('android/app/src/main/res/values/styles.xml'), /Theme.AppCompat/);
   assert.match(file('android/app/src/main/kotlin/com/marcossolutions/secure_biometric_app/MainActivity.kt'), /FlutterFragmentActivity/);
   assert.match(file('ios/Runner/Info.plist'), /NSFaceIDUsageDescription/);
+  assert.match(file('ios/Runner.xcodeproj/project.pbxproj'), /IPHONEOS_DEPLOYMENT_TARGET = 15.0/);
+  assert.match(file('ios/Podfile'), /platform :ios, '15.0'/);
   assert.match(file('ios/Runner.xcodeproj/project.pbxproj'), /CODE_SIGN_ENTITLEMENTS = Runner\/Runner.entitlements/);
   assert.match(file('ios/Runner/Runner.entitlements'), /AppIdentifierPrefix\)com.marcossolutions.secureBiometricApp/);
   const again = spawnSync(process.execPath, [join(project, 'scripts/prepare.mjs')], {env: {...process.env, PATH: bin + ':' + process.env.PATH}, encoding: 'utf8'});

@@ -50,7 +50,7 @@ try {
   const entitlements = join(app, 'ios/Runner/Runner.entitlements');
   writeFileSync(entitlements, '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0"><dict><key>keychain-access-groups</key><array><string>$(AppIdentifierPrefix)com.marcossolutions.secure_biometric_app</string></array></dict></plist>\n');
   edit(join(app, 'ios/Runner.xcodeproj/project.pbxproj'), text => {
-    text = text.replace(/IPHONEOS_DEPLOYMENT_TARGET = [\d.]+;/g, 'IPHONEOS_DEPLOYMENT_TARGET = 13.0;');
+    text = text.replace(/IPHONEOS_DEPLOYMENT_TARGET = [\d.]+;/g, 'IPHONEOS_DEPLOYMENT_TARGET = 15.0;');
     if (!text.includes('CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;')) text = text.replace(/(PRODUCT_BUNDLE_IDENTIFIER = com\.marcossolutions\.[^;]+;)/g, 'CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;\n\t\t\t\t$1');
     return text;
   });
@@ -60,7 +60,7 @@ try {
   if (!bundle) throw new Error('Não foi possível localizar o bundle ID do iOS.');
   edit(entitlements, text => text.replace('com.marcossolutions.secure_biometric_app', bundle));
   const podfile = join(app, 'ios/Podfile');
-  if (existsSync(podfile)) edit(podfile, text => text.replace(/^#?\s*platform :ios, '[^']+'/m, "platform :ios, '13.0'"));
+  if (existsSync(podfile)) edit(podfile, text => text.replace(/^#?\s*platform :ios, '[^']+'/m, "platform :ios, '15.0'"));
   run(['pub', 'get'], app);
   console.info('Android e iOS preparados. Consulte README.md para executar.');
 } finally { rmSync(temporary, {recursive: true, force: true}); }

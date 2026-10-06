@@ -5,6 +5,14 @@ on:
   pull_request:
     paths: ['secure-biometric-app/**', '.github/workflows/biometric-ci.yml']
   workflow_dispatch:
+    inputs:
+      api_url:
+        description: 'Endereço HTTPS da sua API, incluindo barra final'
+        required: false
+        default: 'https://example.invalid/'
+        type: string
+env:
+  BUILD_API_URL: ${{ inputs.api_url || 'https://example.invalid/' }}
 permissions:
   contents: read
 defaults:
@@ -41,6 +49,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: '3.47.6'
           cache: true
       - run: node scripts/prepare.mjs
       - run: flutter analyze
@@ -48,7 +57,7 @@ jobs:
       - run: flutter test
         working-directory: secure-biometric-app/app
       - name: Build APK for testing
-        run: flutter build apk --debug --dart-define=API_URL=https://example.invalid/
+        run: flutter build apk --debug --dart-define="API_URL=$BUILD_API_URL"
         working-directory: secure-biometric-app/app
       - uses: actions/upload-artifact@v4
         with:
@@ -64,7 +73,8 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: '3.47.6'
           cache: true
       - run: node scripts/prepare.mjs
-      - run: flutter build ios --no-codesign --dart-define=API_URL=https://example.invalid/
+      - run: flutter build ios --no-codesign --dart-define="API_URL=$BUILD_API_URL"
         working-directory: secure-biometric-app/app

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'api.dart';
 import 'session.dart';
 
@@ -98,7 +99,9 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Future<void> submit() async {
-    if (busy || !form.currentState!.validate()) {return;}
+    if (busy || !form.currentState!.validate()) {
+      return;
+    }
     FocusScope.of(context).unfocus();
     setState(() {
       busy = true;
@@ -117,11 +120,12 @@ class _AuthScreenState extends State<AuthScreen> {
           method: 'POST',
           body: {'email': email.text.trim()},
         );
-        if (mounted)
-          {setState(() {
+        if (mounted) {
+          setState(() {
             message = data['message'] as String;
             error = false;
-          });}
+          });
+        }
       } else {
         await widget.session.api.call(
           'v1/auth/reset-password',
@@ -137,15 +141,18 @@ class _AuthScreenState extends State<AuthScreen> {
         }
       }
     } catch (e) {
-      if (mounted)
-        {setState(() {
+      if (mounted) {
+        setState(() {
           message = e is ApiException
               ? e.message
               : 'Não foi possível concluir. Tente novamente.';
           error = true;
-        });}
+        });
+      }
     } finally {
-      if (mounted) {setState(() => busy = false);}
+      if (mounted) {
+        setState(() => busy = false);
+      }
     }
   }
 
@@ -318,11 +325,11 @@ class _LockScreenState extends State<LockScreen> {
     try {
       await widget.session.unlock();
     } catch (_) {
-      if (mounted)
-        {setState(
-          () => message =
-              'Não foi possível desbloquear. Tente novamente ou entre com sua senha.',
-        );}
+      if (mounted) {
+        setState(
+          () => message = 'Não foi possível desbloquear. Tente novamente ou entre com sua senha.',
+        );
+      }
     }
   }
 
@@ -397,7 +404,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> action(Future<void> Function() work, {String? success}) async {
-    if (busy) {return;}
+    if (busy) {
+      return;
+    }
     FocusScope.of(context).unfocus();
     setState(() {
       busy = true;
@@ -405,44 +414,52 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     try {
       await work();
-      if (mounted)
-        {setState(() {
+      if (mounted) {
+        setState(() {
           message = success;
           error = false;
-        });}
+        });
+      }
     } catch (e) {
-      if (e is ApiException && e.status == 401) {await session.clear();}
-      if (mounted)
-        {setState(() {
+      if (e is ApiException && e.status == 401) {
+        await session.clear();
+      }
+      if (mounted) {
+        setState(() {
           message = e is ApiException
               ? e.message
               : 'Não foi possível concluir. Tente novamente.';
           error = true;
-        });}
+        });
+      }
     } finally {
-      if (mounted) {setState(() => busy = false);}
+      if (mounted) {
+        setState(() => busy = false);
+      }
     }
   }
 
   Future<void> loadUsers() async {
     final data = await session.api.call('v1/admin/users?offset=$offset');
-    if (mounted)
-      {setState(() {
+    if (mounted) {
+      setState(() {
         users = (data['users'] as List)
             .map((v) => Map<String, dynamic>.from(v as Map))
             .toList();
         total = data['total'] as int;
-      });}
+      });
+    }
   }
 
   Future<void> loadAudit() async {
     final data = await session.api.call('v1/admin/audit');
-    if (mounted)
-      {setState(
+    if (mounted) {
+      setState(
         () => events = (data['events'] as List)
             .map((v) => Map<String, dynamic>.from(v as Map))
             .toList(),
-      );}
+      );
+    }
   }
 
   @override
@@ -635,9 +652,11 @@ class _HomeScreenState extends State<HomeScreen> {
             leading: const Icon(Icons.shield_outlined),
             title: Text(labels[event['action']] ?? event['action'] as String),
             subtitle: Text(
-              DateTime.fromMillisecondsSinceEpoch(
-                event['created_at'] as int,
-              ).toLocal().toString().split('.').first,
+              DateTime.fromMillisecondsSinceEpoch(event['created_at'] as int)
+                  .toLocal()
+                  .toString()
+                  .split('.')
+                  .first,
             ),
           ),
         );
@@ -705,7 +724,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: busy
                     ? null
                     : () {
-                        if (!form.currentState!.validate()) {return;}
+                        if (!form.currentState!.validate()) {
+                          return;
+                        }
                         action(
                           () async {
                             if (view == 'profile') {

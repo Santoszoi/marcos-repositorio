@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 class ApiException implements Exception {
@@ -34,8 +35,12 @@ class Api {
   }) async {
     final request = http.Request(method, base.resolve(path));
     request.headers['Content-Type'] = 'application/json';
-    if (token != null) request.headers['Authorization'] = 'Bearer $token';
-    if (body != null) request.body = jsonEncode(body);
+    if (token != null) {
+      request.headers['Authorization'] = 'Bearer $token';
+    }
+    if (body != null) {
+      request.body = jsonEncode(body);
+    }
     try {
       final response = await http.Response.fromStream(
         await client.send(request).timeout(const Duration(seconds: 20)),

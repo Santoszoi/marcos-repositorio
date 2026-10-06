@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:local_auth/local_auth.dart';
+
 import 'api.dart';
 
 abstract class SecretStore {
@@ -105,11 +106,7 @@ class Session extends ChangeNotifier {
     final data = await api.call(
       name == null ? 'v1/auth/login' : 'v1/auth/register',
       method: 'POST',
-      body: {
-        'email': email,
-        'password': password,
-        'name': ?name,
-      },
+      body: {'email': email, 'password': password, 'name': ?name},
     );
     // Logging in as a different account resets device enrollment.
     await store.delete('biometric');
@@ -127,7 +124,9 @@ class Session extends ChangeNotifier {
   }
 
   Future<void> unlock() async {
-    if (busy || !biometric || !signedIn) {return;}
+    if (busy || !biometric || !signedIn) {
+      return;
+    }
     busy = true;
     notifyListeners();
     final epoch = _epoch;
@@ -136,13 +135,19 @@ class Session extends ChangeNotifier {
       final accepted = await device.authenticate();
       _prompt = false;
       // An actual pause invalidates the attempt, including an outstanding API request.
-      if (!accepted || epoch != _epoch || !foreground) {return;}
+      if (!accepted || epoch != _epoch || !foreground) {
+        return;
+      }
       final data = await api.call('v1/me');
-      if (epoch != _epoch || !foreground) {return;}
+      if (epoch != _epoch || !foreground) {
+        return;
+      }
       user = Map<String, dynamic>.from(data['user'] as Map);
       unlocked = true;
     } on ApiException catch (error) {
-      if (error.status == 401) {await clear();}
+      if (error.status == 401) {
+        await clear();
+      }
       rethrow;
     } finally {
       _prompt = false;
@@ -152,13 +157,16 @@ class Session extends ChangeNotifier {
   }
 
   Future<void> setBiometric(bool enabled) async {
-    if (!unlocked) {throw const ApiException(403, 'Desbloqueie o aplicativo.');}
+    if (!unlocked) {
+      throw const ApiException(403, 'Desbloqueie o aplicativo.');
+    }
     if (enabled) {
-      if (!await device.available())
-        {throw const ApiException(
+      if (!await device.available()) {
+        throw const ApiException(
           0,
           'Cadastre Face ID ou impressão digital nas configurações do aparelho.',
-        );}
+        );
+      }
       final epoch = _epoch;
       _prompt = true;
       bool accepted;
@@ -167,7 +175,9 @@ class Session extends ChangeNotifier {
       } finally {
         _prompt = false;
       }
-      if (!accepted || epoch != _epoch || !foreground) {return;}
+      if (!accepted || epoch != _epoch || !foreground) {
+        return;
+      }
     }
     await store.write('biometric', enabled.toString());
     biometric = enabled;
@@ -193,7 +203,9 @@ class Session extends ChangeNotifier {
 
   Future<void> logout() async {
     try {
-      if (signedIn) {await api.call('v1/auth/logout', method: 'POST', body: {});}
+      if (signedIn) {
+        await api.call('v1/auth/logout', method: 'POST', body: {});
+      }
     } finally {
       await clear();
     }
