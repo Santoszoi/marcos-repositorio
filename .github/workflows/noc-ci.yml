@@ -1,0 +1,31 @@
+name: NOC dashboard validation
+on:
+  push:
+    paths: ["noc-monitoring/**", ".github/workflows/noc-ci.yml"]
+  pull_request:
+    paths: ["noc-monitoring/**", ".github/workflows/noc-ci.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: noc-monitoring
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: noc-monitoring/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: noc-static-site
+          path: noc-monitoring/out
+          retention-days: 14
