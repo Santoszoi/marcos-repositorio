@@ -1,0 +1,46 @@
+name: Portfolio apps CI
+on:
+  push:
+    branches: [main]
+    paths: ['adanalytics-pro/**', 'techservice-os/**', '.github/workflows/portfolio-apps-ci.yml']
+  pull_request:
+    paths: ['adanalytics-pro/**', 'techservice-os/**', '.github/workflows/portfolio-apps-ci.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [adanalytics-pro, techservice-os]
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run typecheck
+      - run: node scripts/check-export.mjs
+      - name: Build production Docker image
+        run: docker build -t portfolio-app:test .
+      - name: Run Docker and verify routes and assets
+        run: |
+          docker run -d --name portfolio-app -p 127.0.0.1:3000:8080 portfolio-app:test
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3000/ >/dev/null; then break; fi
+            sleep 1
+          done
+          TEST_BASE_URL=http://127.0.0.1:3000 node scripts/check-export.mjs
+      - name: Stop Docker container
+        if: always()
+        run: docker rm -f portfolio-app || true
