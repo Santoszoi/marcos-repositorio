@@ -1,0 +1,12 @@
+services:
+  catalogo-flow:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - catalogo_data:/app/data
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  catalogo_data:

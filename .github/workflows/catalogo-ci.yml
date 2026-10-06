@@ -1,0 +1,47 @@
+name: Catalogo Flow validation
+on:
+  push:
+    paths: ["catalogo-flow/**", ".github/workflows/catalogo-ci.yml"]
+  pull_request:
+    paths: ["catalogo-flow/**", ".github/workflows/catalogo-ci.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: catalogo-flow
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: catalogo-flow/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run test:integration
+      - run: docker compose up --build -d
+      - name: Validate Docker application
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let i=0;i<50;i++){
+            try{if((await fetch('http://127.0.0.1:3000/api/health')).ok){ready=true;break;}}catch{}
+            await new Promise(resolve=>setTimeout(resolve,1000));
+          }
+          if(!ready)throw new Error('Docker application did not become healthy.');
+          NODE
+          node scripts/test-api.mjs
+      - if: always()
+        run: docker compose down
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalogo-flow-worker
+          path: catalogo-flow/dist
+          retention-days: 14

@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.open-next/
+.wrangler/
+dist/
+data/
+.sites-runtime/
+.env*
+!.env.example
+.dev.vars*
+*.tsbuildinfo

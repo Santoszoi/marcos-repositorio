@@ -1,0 +1,11 @@
+node_modules
+.git
+.next
+.open-next
+.wrangler
+dist
+data
+.env*
+.dev.vars*
+.sites-runtime
+*.tsbuildinfo
