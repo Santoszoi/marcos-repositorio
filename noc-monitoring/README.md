@@ -56,6 +56,3 @@ Um dispositivo disponível recebe atenção quando o ping supera 40 ms, o jitter
 
 Uma integração futura precisa de um backend autenticado, coleta autorizada dos equipamentos e armazenamento das séries temporais. Credenciais e sondas devem permanecer no servidor. A camada tipada em `src/types/network.ts` pode ser usada como contrato para substituir a simulação.
 
-## Integração opcional do navegador
-
-Quando disponível, a API WebMCP registra `get_noc_demo_summary`, uma leitura do estado atual. Navegadores sem suporte seguem com a experiência normal. A validação dessa API em um contexto WebMCP compatível não estava disponível no ambiente de publicação; os testes automatizados cobrem a lógica da telemetria.

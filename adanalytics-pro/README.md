@@ -2,7 +2,6 @@
 
 Demonstração pública desenvolvida por Marcos Solutions em Next.js App Router, TypeScript e Tailwind CSS. Recharts é carregado sob demanda.
 
-- Vitrine: https://adanalytics-pro-marcos.marcosmiguel-emily.chatgpt.site
 - Código: https://github.com/Santoszoi/marcos-repositorio/tree/main/adanalytics-pro
 - Domínio preparado: https://analytics.marcossolutions.com.br (depende da configuração e validação do DNS).
 
@@ -36,7 +35,7 @@ Todas as métricas e campanhas são fictícias. Nenhuma API de anúncios é cone
 
 Interface responsiva, navegação por teclado, rótulos nos formulários, estados de carregamento/erro/vazio e aviso de simulação. Testes de regras de negócio e integridade dos arquivos publicados. GitHub Actions também constrói e executa o contêiner.
 
-WebMCP: ferramenta de consulta dos indicadores com schema vazio, somente leitura e detecção de suporte do navegador. Validação em navegador compatível indisponível neste ambiente; o recurso opcional não interfere nos fluxos comuns. Inspeção visual e interação em navegador não foram executadas neste ambiente.
+Inspeção visual e interação em navegador não foram executadas neste ambiente.
 
 ## Estrutura
 

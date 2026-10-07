@@ -102,10 +102,6 @@ docker-compose.yml
 
 As migrações geradas em `drizzle/` contêm somente o esquema. Produtos iniciais são inseridos de forma separada na criação de cada loja. O identificador nulo no arquivo Wrangler é reservado ao banco local; não é uma credencial de produção. `.env`, `.dev.vars`, bancos locais e artefatos compilados são ignorados pelo Git.
 
-## Integração opcional do navegador
-
-Em navegadores compatíveis, `get_catalog_cart` permite ler a sacola atual pela API WebMCP, sem criar ou enviar um pedido. A experiência normal funciona sem essa API. A validação em um contexto WebMCP compatível não estava disponível no ambiente de publicação.
-
 ## Créditos
 
 Fotos do Unsplash, conforme licença de uso: [hambúrguer, Stanley Kustamin](https://unsplash.com/photos/a-juicy-cheeseburger-with-lettuce-and-tomato-egC8A3EWFms), [batatas, Nils B](https://unsplash.com/photos/a-bowl-of-french-fries-and-sauce-on-a-wooden-table-x-lXO1C1NCA), [pizza, Aurélien Lemasson-Théobald](https://unsplash.com/photos/round-cooked-pizza-x00CzBt4Dfk) e [brownie, Luis Valdez](https://unsplash.com/es/fotos/un-primer-plano-de-una-bandeja-de-brownies-sobre-una-mesa-3Vck3vppPwk). [Licença Unsplash](https://unsplash.com/license).

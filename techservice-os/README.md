@@ -2,7 +2,6 @@
 
 Demonstração pública desenvolvida por Marcos Solutions em Next.js App Router, TypeScript e Tailwind CSS. Estado compartilhado pelo Context e registros versionados no localStorage.
 
-- Vitrine: https://techservice-os-marcos.marcosmiguel-emily.chatgpt.site
 - Código: https://github.com/Santoszoi/marcos-repositorio/tree/main/techservice-os
 - Domínio preparado: https://os.marcossolutions.com.br (depende da configuração e validação do DNS).
 
@@ -36,7 +35,7 @@ Cadastro de O.S. com até 20 itens, quantidades inteiras de 1 a 100, preços nã
 
 Interface responsiva, navegação por teclado, rótulos nos formulários, estados de carregamento/erro/vazio e aviso de simulação. Testes de regras de negócio e integridade dos arquivos publicados. GitHub Actions também constrói e executa o contêiner.
 
-WebMCP: ferramenta de consulta dos indicadores com schema vazio, somente leitura e detecção de suporte do navegador. Validação em navegador compatível indisponível neste ambiente; o recurso opcional não interfere nos fluxos comuns. Inspeção visual e interação em navegador não foram executadas neste ambiente.
+Inspeção visual e interação em navegador não foram executadas neste ambiente.
 
 ## Estrutura
 

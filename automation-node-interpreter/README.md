@@ -2,7 +2,6 @@
 
 A typed JSON flow interpreter with strict predicates, graph validation and an inspectable execution trace.
 
-**Live demo:** https://automation-node-interpreter-marcos.marcosmiguel-emily.chatgpt.site  
 **Source:** https://github.com/Santoszoi/marcos-repositorio/tree/main/automation-node-interpreter
 
 The interface is in Portuguese; this technical documentation is in English. All examples are fictional. Built with Next.js App Router, React, TypeScript and Tailwind CSS. The deployment is a static export; engine logic runs in the browser without a backend.
@@ -57,7 +56,7 @@ Nine tests cover strict ALL/ANY semantics, primitive comparisons and own fields,
 | `src/app/layout.tsx`                             | Portuguese document language and metadata                              |
 | `src/app/globals.css`                            | Tailwind import, responsive layout and project theme                   |
 | `src/components/EngineShell.tsx`                 | Shared branding, source and documentation links                        |
-| `src/lib/`                                       | Typed engine, fictional examples and optional read-only WebMCP adapter |
+| `src/lib/`                                       | Typed engine and fictional examples |
 | `tests/`                                         | Domain tests using Node's test runner and tsx                          |
 | `scripts/check-export.mjs`                       | Production HTML, favicon and referenced-asset checks                   |
 | `Dockerfile`, `nginx.conf`, `docker-compose.yml` | Multi-stage static production container                                |
@@ -95,10 +94,6 @@ Open http://localhost:3000. The build stage uses Node.js 24; the runtime serves 
 The repository's `engines-ci.yml` runs tests, production build, TypeScript checks, static asset checks and container HTTP checks for each engine. HTTP checks establish route/asset availability; they are not browser interaction tests. Automated browser visual/interaction QA was unavailable during preparation and is not claimed here.
 
 Forms have associated labels, buttons expose their action, result regions announce updates, error messages use alert/status semantics and controls retain visible focus styling. Responsive layouts collapse on narrow screens. Keyboard and assistive-technology testing remains a separate manual verification step.
-
-## Optional read-only WebMCP
-
-`src/lib/webmcp.ts` feature-detects `document.modelContext` and registers a read-only summary/trace tool with an empty input schema. Unsupported browsers continue normally. Registration is cleaned up when the component unmounts. Tools do not modify reservations, validate new user input, expose password values or trigger actions. WebMCP browser execution was not independently tested.
 
 ## Security and production scope
 
