@@ -1,11 +1,58 @@
 # Form Schema Validator
 
-A dependency-free validation engine with composable TypeScript rules and an interactive form/JSON workbench.
+A lightweight custom form validation engine built from scratch in TypeScript, without validation libraries such as Zod or Yup. It demonstrates composable higher-order functions, immutable input handling and structural validation through an interactive React form/JSON workbench.
 
 **Live demo:** https://form-schema-validator-marcos.marcosmiguel-emily.chatgpt.site  
 **Source:** https://github.com/Santoszoi/marcos-repositorio/tree/main/form-schema-validator
 
 The interface is in Portuguese; this technical documentation is in English. All examples are fictional. Built with Next.js App Router, React, TypeScript and Tailwind CSS. The deployment is a static export; engine logic runs in the browser without a backend.
+
+## Key architectural features
+
+- **Dependency-free engine:** The validation module uses native TypeScript and JavaScript. The demo application has React, Next.js and tooling dependencies.
+- **Higher-order functions:** Rule factories produce reusable validation functions that can be composed into field schemas.
+- **Typed contracts:** TypeScript generics connect schema fields to typed error maps; runtime checks validate untrusted input.
+- **First-error short-circuiting:** Ordered loops stop after the first failing rule per field while collecting errors across fields.
+- **Strict input structure:** Unknown keys, forbidden prototype-related keys and non-plain objects are rejected.
+- **Immutable evaluation:** Validation returns a new result without modifying the supplied data.
+
+## Tech stack
+
+| Layer | Technology |
+| --- | --- |
+| Validation engine | TypeScript and native JavaScript |
+| Interactive demo | React, Next.js App Router and Tailwind CSS |
+| Unit tests | Node.js test runner, node:assert/strict and tsx |
+| Continuous integration | GitHub Actions: tests, type checks, static build and Docker HTTP checks |
+| Production container | Multi-stage Docker build and Nginx |
+
+## Usage example
+
+```ts
+import {
+  required,
+  isEmail,
+  minLength,
+  validateSchema,
+  type SchemaDefinition,
+} from "./src/lib/schemaValidator";
+
+interface ContactForm {
+  name: string;
+  email: string;
+}
+
+const schema: SchemaDefinition<ContactForm> = {
+  name: [required(), minLength(3)],
+  email: [required(), isEmail()],
+};
+
+const result = validateSchema<ContactForm>(
+  { name: "Marcos", email: "marcos@example.com" },
+  schema,
+);
+// result.isValid === true; result.errors is empty.
+```
 
 ## Architecture
 
@@ -60,9 +107,11 @@ Eight tests cover whitespace and presence, email/password end anchors, immutable
 
 ## Run locally
 
-Use Node.js 24 and npm. From this project's directory:
+Use Node.js 24 and npm. This project is a folder in the public portfolio repository:
 
 ```bash
+git clone https://github.com/Santoszoi/marcos-repositorio.git
+cd marcos-repositorio/form-schema-validator
 npm ci
 npm run dev
 ```
@@ -99,3 +148,7 @@ Forms have associated labels, buttons expose their action, result regions announ
 ## Security and production scope
 
 No real credentials or customer data are included. User-supplied text is rendered through React's normal escaping; no `eval` or injected HTML is used. These demos demonstrate domain algorithms and controlled front-end state. They do not include accounts, durable persistence or shared multi-user authorization. See the engine-specific boundaries above before adopting the code in a production system.
+
+## Connect
+
+[Email](mailto:marcosrony.neves@gmail.com) · [LinkedIn](https://www.linkedin.com/in/marcos--neves) · [Portfolio](https://marcossolutions.com.br)
