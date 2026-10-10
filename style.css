@@ -91,3 +91,5 @@ html{scroll-padding-top:110px}section[id],article[id]{scroll-margin-top:110px}h1
 .about-section > div.service-enter-down,.faq-list > details.service-enter-down{animation:service-enter-down .6s ease-out both}
 .about-section > div.service-enter-up,.faq-list > details.service-enter-up{animation:service-enter-up .6s ease-out both}
 @media(prefers-reduced-motion:reduce){.about-section > div.service-enter-down,.about-section > div.service-enter-up,.faq-list > details.service-enter-down,.faq-list > details.service-enter-up{animation:none;transform:none;opacity:1}}
+
+.pdv-preview{display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:10px;margin:20px 0}.pdv-video{margin-top:24px}.pdv-video summary{cursor:pointer;color:var(--lime);padding:8px 0}.pdv-video video{display:block;width:100%;height:auto;margin-top:12px;border-radius:10px}.pdv-video p{font-size:13px;color:var(--muted)}
